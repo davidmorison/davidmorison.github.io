@@ -1,0 +1,79 @@
+<!all html and Java script is based on tutorials from w2schools.com>
+<! I've cobbled this website together but I don't have any real proficency in html or javascript>
+<!DOCTYPE html>
+<html>
+<title>David Morison </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
+<body>
+
+<h2 class="w3-center">Optimal Interpolation</h2>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="./images4blup/BDP_non_navy.png"             style="width:50%">
+  <img class="mySlides" src="./images4blup/two_types_of_data.png"        style="width:100%">
+  <img class="mySlides" src="./images4blup/could_be_stocastic.png"       style="width:50%">
+  <img class="mySlides" src="./images4blup/could_be_homoscedastic.png"   style="width:50%">
+  <img class="mySlides" src="./images4blup/two_covariograms.png"         style="width:100%">
+  <img class="mySlides" src="./images4blup/red_const.png"                style="width:100%">
+  <img class="mySlides" src="./images4blup/red_lin.png"                  style="width:100%">
+  <img class="mySlides" src="./images4blup/red_parab.png"                style="width:100%">
+  <img class="mySlides" src="./images4blup/red_trig.png"                 style="width:100%">
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+</body>
+</html>
+
+<!BDP_non_navy.png              Working on an easy to deploy method for ocean current and buoy drift prediction from observed buoy tracks, we utilized Kriging as a general and straightforward method of predicting stationary random fields from limited observations. We want to use the wealth of information provided by ensemble forecasts or other simulations. Optimal interpolation offers a lightweight method for combining prior knowledge with data.
+<!two_types_of_data.png         Linear regression seems to be the most widely utilized method from linear statistics. This method's correct setting is when independent variables plus identically and independently distributed noise combine to create a dependant variable. When random fields are spatially correlated, Kriging methods become appropriate. A wealth of methods intermix the methods of and assumptions of Kriging and linear regression. Optimal interpolation and BLUP (best linear unbiased prediction) are two methods that combine detailed regressors and expected measurement covariance.
+<!could_be_stocastic.png        For a small number of observations, indicated by red dots, an underlying process could be a spatially correlated random field.
+<!could_be_homoscedastic.png    Or, an identical data set could arise from a linear trend plus independently distributed noise.
+<!two_covariograms.png          These covariograms will help illustrate the flexibility of optimal interpolation. The x-axis is the absolute difference in the dependant variable between two data points. The y-axis is the expected covariance between stationary random field values at locations separated by x. A family of blue lines indicates varying degrees of spatial covariance. Independent noise corresponds to a single blue dot on the y-axis at x=0 and zero covariance everywhere else. The left and right illustrate different transitions from the assumption of spatial correlation to independent noise.
+<!red_const.png                 With a lone regressor equal to a constant offset, optimal interpolation is equivalent to ordinary Kriging. There is no "true" or correct underlying process. The red dots are the same made-up data throughout this slideshow. Dark blue lines indicate the expected values, and light blue indicates confidence intervals. The family of ten lines in each panel demonstrates the variety of predictions arising from the covariograms in the previous slide.        
+<!red_lin.png                   Here, we include a linear trend regressor.
+<!red_parab.png                 Now, a second-order polynomial is allowed.
+<!red_trig.png                  We have yet to discuss any empirical considerations, but in this graphic a trigonometric function has been used as a regressor. Prior information about any cyclic structure may enter into the regressors.
+<!                              As a hypothetical, consider having access to ensemble weather forecast data. Empirical orthogonal functions or principal component analysis can approximate the structure and variability of large-scale weather patterns and provide regressors. Then the residual variation of the ensemble forecasts can guide the choice or design of covariograms.
+<!                              State of the art data assimilation for weather models requires the collaboration of experts in multiple scientific fields. In contrast, the approach suggested here is tractable for a single researcher. Optimal interpolation can bring much of the information from the ensemble forecasts to bear on observations' assimilation.
+<!>
+
+
+1    Working on an easy to deploy method for ocean current and buoy drift prediction from observed buoy tracks, we utilized Kriging as a general and straightforward method of predicting stationary random fields from limited observations. We want to use the wealth of information provided by ensemble forecasts or other simulations. Optimal interpolation offers a lightweight method for combining prior knowledge with data.
+2    Linear regression seems to be the most widely utilized method from linear statistics. This method's correct setting is when independent variables plus identically and independently distributed noise combine to create a dependant variable. When random fields are spatially correlated, Kriging methods become appropriate. A wealth of methods intermix the methods of and assumptions of Kriging and linear regression. Optimal interpolation and BLUP (best linear unbiased prediction) are two methods that combine detailed regressors and expected measurement covariance.
+3    For a small number of observations, indicated by red dots, an underlying process could be a spatially correlated random field.
+4    Or, an identical data set could arise from a linear trend plus independently distributed noise.
+5    These covariograms will help illustrate the flexibility of optimal interpolation. The x-axis is the absolute difference in the dependant variable between two data points. The y-axis is the expected covariance between stationary random field values at locations separated by x. A family of blue lines indicates varying degrees of spatial covariance. Independent noise corresponds to a single blue dot on the y-axis at x=0 and zero covariance everywhere else. The left and right illustrate different transitions from the assumption of spatial correlation to independent noise.
+6    With a lone regressor equal to a constant offset, optimal interpolation is equivalent to ordinary Kriging. There is no "true" or correct underlying process. The red dots are the same made-up data throughout this slideshow. Dark blue lines indicate the expected values, and light blue indicates confidence intervals. The family of ten lines in each panel demonstrates the variety of predictions arising from the covariograms in the previous slide.        
+7    Here, we include a linear trend regressor.
+8    Now, a second-order polynomial is allowed.
+9    We have yet to discuss any empirical considerations, but in this graphic a trigonometric function has been used as a regressor. Prior information about any cyclic structure may enter into the regressors.
+     As a hypothetical, consider having access to ensemble weather forecast data. Empirical orthogonal functions or principal component analysis can approximate the structure and variability of large-scale weather patterns and provide regressors. Then the residual variation of the ensemble forecasts can guide the choice or design of covariograms.
+     State of the art data assimilation for weather models requires the collaboration of experts in multiple scientific fields. In contrast, the approach suggested here is tractable for a single researcher. Optimal interpolation can bring much of the information from the ensemble forecasts to bear on observations' assimilation.
+
+
