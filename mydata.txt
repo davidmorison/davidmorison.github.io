@@ -1,0 +1,53 @@
+checking to see if these are logged
+blah blahFrom: js@aol.com
+ <br>From: J. Smith
+ <br>blah blahFrom: js@aol.com
+ <br>From: J. Smith
+ <br>2From: js@aol.com
+ <br>From: J. Smith
+ <br>3From: js@aol.com
+ <br>From: J. Smith
+ <br>stuff that I typeFrom: BB@aol.com
+ <br>From: Bob
+ <br>write itFrom: jj@aol.com
+ <br>From: joe
+ <br>hello workFrom: nosiromdivad@gmail.com
+ <br>From: david morison
+ <br>why does this work sometimesFrom: somename@netmail.com
+ <br>From: david morison
+ <br>why does this work sometimes only with my email?From: nosiromdivad@gmail.com
+ <br>From: david morison
+ <br>why does this work sometimes only with my email mistypeFrom: nsiromdivad@gmail.com
+ <br>From: david morison
+ <br>why does this work sometimes only with my email mistypeFrom: nosiromdivad@gmail.com
+ <br>From: david morison
+ <br>contact runFrom: nosiromdivad@gmail.com
+ <br>From: david morison
+ <br>fdadfaFrom: fda
+ <br>From: fda
+ <br>mip map blapFrom: yolo@polo.com
+ <br>From: david morison
+ <br>ok seems to be workingFrom: yolo@polo.com
+ From: david morison
+ better formatting 
+  From: mipmap@polo.com
+  Name: new nameHello, this form is working!
+  From: attaya.joseph@gmail.com
+  Name: Attaya JosephHello 🫂
+  From: Attaya.joseph@gmail.com
+  Name: Attaya JosephOur president utter the phrase "sometime science doesn't know what it knows."  What does that mean?  
+  From: andy.morison@gmail.com
+  Name: Andy Morisonchecking that it still works
+  From: nosiromdivad@gmail.com
+  Name: davidso does this still work or what?
+  From: nosiromdivad@gmail.com
+  Name: myselfdoes this form work?
+
+  From: nosiromdivad@gmail.com
+  Name: dlkdajlldfajflajldfajl
+
+checking march 15
+sea ice
+seaice
+seaice
+Hello
