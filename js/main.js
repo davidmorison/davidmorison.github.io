@@ -41,8 +41,8 @@ function gotBuffers( buffers ) {
     var canvas = document.getElementById( "wavedisplay" );
     drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 
-    var canvas2 = document.getElementById( "plotdisplay" );
-    drawBuffer( canvas2.width, canvas2.height, canvas2.getContext('2d'), buffers[0] );
+    var canvas = document.getElementById( "plotdisplay" );
+    drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
    
     // the ONLY time gotBuffers is called is right after a new recording is completed - 
     // so here's where we should set up the download.
