@@ -24,7 +24,7 @@ function plotBuffer( width, height, context, data ) {
     var s_data =new Array(data.length);
     s_data[0]=Math.abs(data[0]);
     for(var i=1; i<data.length; i++){
-        s_data[i]=0.9*s_data[i-1]+0.1*Math.abs(data[i])
+        s_data[i]=0.99*s_data[i-1]+0.01*Math.abs(data[i])
     }
     context.fillStyle = "green";
     context.clearRect(0,0,width,height);
