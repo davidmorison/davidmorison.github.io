@@ -42,7 +42,7 @@ function gotBuffers( buffers ) {
     drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 
     var canvas = document.getElementById( "plotdisplay" );
-    drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
+    plotBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
    
     // the ONLY time gotBuffers is called is right after a new recording is completed - 
     // so here's where we should set up the download.
