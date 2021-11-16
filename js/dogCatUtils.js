@@ -1,8 +1,8 @@
 function convolve(ts,wv){
-  var nt = ts.length;
-  var nw = wv.length;
-  var cs = new Array(nt);
-  var R  = Math.floor(nw/2);
+  nt = ts.length;
+  nw = wv.length;
+  cs = new Array(nt);
+  R  = Math.floor(nw/2);
   for(var i=0; i < nt; i++){
     x=0
     for(var j=0; j < nw; j++){
