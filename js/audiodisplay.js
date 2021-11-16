@@ -27,14 +27,29 @@ function plotBuffer( width, height, context, data ) {
         s_data[i]=0.99*s_data[i-1]+0.01*Math.abs(data[i])
     }
     // other way faster var s_data=window_amp(data)
-    s_data=step_approx(s_data);
+    // s_data=step_approx(s_data);
     context.fillStyle = "green";
     context.clearRect(0,0,width,height);
     for(var i=0; i < width; i++){
         var min = 1.0;
         var max = -1.0;
         for (j=0; j<step; j++) {
-            var datum = -.5*Math.abs(s_data[(i*step)+j]); 
+            var datum = -Math.abs(s_data[(i*step)+j]); 
+            if (datum < min)
+                min = datum;
+            if (datum > max)
+                max = datum;
+        }
+        context.fillRect(i,(1+min)*amp,1,Math.max(1,(max-min)*amp));
+    }
+    s_data=step_approx(s_data);
+    context.fillStyle = "red";
+    context.clearRect(0,0,width,height);
+    for(var i=0; i < width; i++){
+        var min = 1.0;
+        var max = -1.0;
+        for (j=0; j<step; j++) {
+            var datum = -Math.abs(s_data[(i*step)+j]); 
             if (datum < min)
                 min = datum;
             if (datum > max)
