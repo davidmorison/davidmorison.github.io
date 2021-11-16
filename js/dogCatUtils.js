@@ -26,12 +26,11 @@ function add_ar(a,b){
 }
 
 function window_amp(ts){
-  nt=ts.length;
   rate=50000; //approx samples per second?
   syl_per_sec=0.5*(3.3+5.9); // between 3 and 6 syllables per second
   n_window=Math.floor(rate/syl_per_sec);
   wv = new Array(n_window);
-  for(var i=0; i < n; i++){
+  for(var i=0; i < n_window; i++){
     wv[i]=1-Math.abs((2*i-n_window)/n_window);
   }
   //dt=1./rate
