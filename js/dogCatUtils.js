@@ -40,7 +40,7 @@ function window_amp(ts){
   return convolve(ts,wv);
 }
 
-function step_approx(ts,a,b){
+function step_approx(ts){
     n=ts.length;
     pen=0
     s= new Array(n);
