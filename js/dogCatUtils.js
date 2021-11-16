@@ -8,7 +8,7 @@ function convolve(ts,wv){
     for(var j=0; j < nw; j++){
       var ii=i+j-R
       var inc=0
-      if (ii<0) { inc = 0} else if (ii>=nt) {inc = 0 } else {inc = ts(ii)*wv(j)}
+      if (ii<0) { inc = 0} else if (ii>=nt) {inc = 0 } else {inc = ts[ii]*wv[j]}
       x+=inc;
       }
       cs[i]=x;
