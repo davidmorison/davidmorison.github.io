@@ -13,6 +13,7 @@ function convolve(ts,wv){
       }
       cs[i]=x;
     }
+    cs=[nt,nw,R]
     return cs;
 }
 
