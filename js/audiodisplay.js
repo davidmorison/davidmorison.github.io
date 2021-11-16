@@ -44,7 +44,7 @@ function plotBuffer( width, height, context, data ) {
     }
     s_data=step_approx(s_data);
     context.fillStyle = "red";
-    context.clearRect(0,0,width,height);
+    //context.clearRect(0,0,width,height);
     for(var i=0; i < width; i++){
         var min = 1.0;
         var max = -1.0;
