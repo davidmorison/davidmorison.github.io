@@ -25,11 +25,13 @@ function add_ar(a,b){
   return c;
 }
 
-
-
-// RATE
-// dt=1./RATE
-// lo_f=
-// hi_f=
+function wavelet(ts){
+nt=ts.length
+RATE=50000 //approx samples per second?
+dt=1./RATE
+lo_f= 500  // low freq common in speech
+hi_f=2000  // hi freq common in speach
+n_f =10    // how many freq to consider
+}
 
 // for 
