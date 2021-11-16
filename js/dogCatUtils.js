@@ -19,9 +19,8 @@ function convolve(ts,wv){
 function add_ar(a,b){
   n = a.length;
   c = new Array(n);
-  R  = Math.floor(nw/2);
   for(var i=0; i < nt; i++){
-    c[i]=x[i]+b[i];
+    c[i]=a[i]+b[i];
   }
   return c;
 }
