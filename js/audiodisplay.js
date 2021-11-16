@@ -34,7 +34,7 @@ function plotBuffer( width, height, context, data ) {
         var min = 1.0;
         var max = -1.0;
         for (j=0; j<step; j++) {
-            var datum = Math.abs(s_data[(i*step)+j]); 
+            var datum = -.5*Math.abs(s_data[(i*step)+j]); 
             if (datum < min)
                 min = datum;
             if (datum > max)
