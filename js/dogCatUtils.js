@@ -40,4 +40,16 @@ function window_amp(ts){
   return convolve(ts,wv);
 }
 
-// for 
+function step_approx(ts){
+    n=ts.length;
+    s= new Array(n);
+    m=0
+    for(var i=0; i < n; i++){
+      m+=ts[i];
+    }
+    m=m/n;
+    for(var i=0; i < n; i++){
+      if (ts[i]>m){s[i]=1}else{s[i]=0};
+    }
+  return s
+}
