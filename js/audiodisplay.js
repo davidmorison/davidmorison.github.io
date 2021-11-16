@@ -20,7 +20,6 @@ function drawBuffer( width, height, context, data ) {
 
 function plotBuffer( width, height, context, data ) {
     var step = Math.ceil( data.length / width );
-    step=1
     var amp = height / 2;
     var s_data =new Array(data.length);
     s_data[0]=Math.abs(data[0]);
@@ -33,8 +32,7 @@ function plotBuffer( width, height, context, data ) {
         var min = 1.0;
         var max = -1.0;
         for (j=0; j<step; j++) {
-            var datum = Math.abs(  data[(i*step)+j]); 
-            // var datum = Math.abs(s_data[(i*step)+j]); 
+            var datum = Math.abs(s_data[(i*step)+j]); 
             if (datum < min)
                 min = datum;
             if (datum > max)
