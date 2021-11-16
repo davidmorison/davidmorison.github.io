@@ -27,6 +27,7 @@ function plotBuffer( width, height, context, data ) {
         s_data[i]=0.99*s_data[i-1]+0.01*Math.abs(data[i])
     }
     // other way faster var s_data=window_amp(data)
+    s_data=step_approx(s_data);
     context.fillStyle = "green";
     context.clearRect(0,0,width,height);
     for(var i=0; i < width; i++){
