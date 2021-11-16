@@ -25,13 +25,20 @@ function add_ar(a,b){
   return c;
 }
 
-function wavelet(ts){
-nt=ts.length
-RATE=50000 //approx samples per second?
-dt=1./RATE
-lo_f= 500  // low freq common in speech
-hi_f=2000  // hi freq common in speach
-n_f =10    // how many freq to consider
+function window_amp(ts){
+  nt=ts.length;
+  rate=50000; //approx samples per second?
+  syl_per_sec=0.5*(3.3+5.9); // between 3 and 6 syllables per second
+  n_window=Math.floor(rate/syl_per_second);
+  wv = new Array(n_window);
+  for(var i=0; i < n; i++){
+    wv[i]=1-Math.abs((2*i-n_window)/n_window);
+  }
+  //dt=1./rate
+  //lo_f= 500  // low freq common in speech
+  //hi_f=2000  // hi freq common in speach
+  //n_f =10    // how many freq to consider
+  return convolove(ts,wv);
 }
 
 // for 
