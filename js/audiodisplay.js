@@ -44,7 +44,6 @@ function plotBuffer( width, height, context, data ) {
     }
     s_data=step_approx(s_data);
     context.fillStyle = "red";
-    //context.clearRect(0,0,width,height);
     for(var i=0; i < width; i++){
         var min = 1.0;
         var max = -1.0;
@@ -57,4 +56,11 @@ function plotBuffer( width, height, context, data ) {
         }
         context.fillRect(i,(1+min)*amp,1,Math.max(1,(max-min)*amp));
     }
+    pen=0
+    b=0
+    for{var i=0; i<s_data.length; i++){
+        if(s_data[i]>pen){b=i; pen=s_data[i];}
+    }
+    a=b-pen;
+    a=1
 }
