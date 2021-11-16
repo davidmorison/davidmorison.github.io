@@ -37,7 +37,7 @@ function window_amp(ts){
   //lo_f= 500  // low freq common in speech
   //hi_f=2000  // hi freq common in speach
   //n_f =10    // how many freq to consider
-  return convolove(ts,wv);
+  return convolve(ts,wv);
 }
 
 // for 
