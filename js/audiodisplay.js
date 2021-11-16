@@ -21,12 +21,12 @@ function drawBuffer( width, height, context, data ) {
 function plotBuffer( width, height, context, data ) {
     var step = Math.ceil( data.length / width );
     var amp = height / 2;
-    //var s_data =new Array(data.length);
-    //s_data[0]=Math.abs(data[0]);
-    //for(var i=1; i<data.length; i++){
-    //    s_data[i]=0.99*s_data[i-1]+0.01*Math.abs(data[i])
-    //}
-    var s_data=window_amp(data)
+    var s_data =new Array(data.length);
+    s_data[0]=Math.abs(data[0]);
+    for(var i=1; i<data.length; i++){
+        s_data[i]=0.99*s_data[i-1]+0.01*Math.abs(data[i])
+    }
+    // other way faster var s_data=window_amp(data)
     context.fillStyle = "green";
     context.clearRect(0,0,width,height);
     for(var i=0; i < width; i++){
