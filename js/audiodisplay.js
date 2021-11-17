@@ -61,6 +61,6 @@ function plotBuffer( width, height, context, data ) {
     for(var i=0; i<s_data.length; i++){
         if(s_data[i]>pen){b=i; pen=s_data[i];}
     }
-    a=b-pen;
-    a=1
+    a=b-Math.floor(pen*1.2); // 20 percent earlier smoother lags
+    snippet=data.slice(a,b)
 }
