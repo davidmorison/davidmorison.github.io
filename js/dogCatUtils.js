@@ -54,3 +54,22 @@ function step_approx(ts){
     }
   return s
 }
+function auto_corr(x,n){
+  c=new Array(n);
+  nx=x.length;
+  m=0;
+  for(var i=1; i<nx; i++){
+    m+=x[i];
+  }
+  m=m/nx;
+  s=0;
+  for(var i=1; i<nx; i++){
+    x[i]=x[i]-m;
+    s+=x[i]*x[i];
+  }
+  s=Math.sqrt(s/nx);
+  for(var i=1; i<nx; i++){
+    x[i]=x[i]/s;
+  }
+  return [s,m,nx,n]
+}
