@@ -58,7 +58,7 @@ function plotBuffer( width, height, context, data ) {
     }
     pen=0
     b=0
-    for{var i=0; i<s_data.length; i++){
+    for(var i=0; i<s_data.length; i++){
         if(s_data[i]>pen){b=i; pen=s_data[i];}
     }
     a=b-pen;
