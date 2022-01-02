@@ -23,14 +23,12 @@ var audioInput = null,
 var rafID = null;
 var analyserContext = null;
 var spectrogramContext = null;
-var scrollplotContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 var specIndex = 0;
-var maxRecord = 0;
 var storeSpec=[];
-var storeTot=[];
 var nWindow=200;
+var doShow=false;
 
 /* TODO:
 
@@ -131,36 +129,6 @@ function updateAnalysers(time) {
     rafID = window.requestAnimationFrame( updateAnalysers );
 }
 
-// not sure why time defalut arg? appears?
-function drawTotal(time){
-  if (!scrollplotContext) { // init relevant context
-      var scrollcanvas = document.getElementById("scrollplot");
-      canvasWidth = scrollcanvas.width;
-      canvasHeight = scrollcanvas.height;
-      scrollplotContext = scrollcanvas.getContext('2d');
-  }
-  // is this the right way to clear a "lineTo" or a "stroke"?
-  scrollplotContext.clearRect(0,0,canvasWidth,canvasHeight);
-
-  scrollplotContext.beginPath();
-  scrollplotContext.moveTo(0,0);
-  for (var i=0; i<nWindow; i+=1) {
-     var ii=(i+specIndex)%nWindow;
-     var x=Math.floor(i*canvasWidth/nWindow)
-     if (ii<=maxRecord){
-        var y=Math.floor(storeTot[ii]/500);
-        y=canvasHeight-y;
-        scrollplotContext.lineTo(x,y); 
-     } else {
-        scrollplotContext.lineTo(x,canvasHeight); 
-     }
-  }
-  scrollplotContext.strokeStyle = "white";
-  scrollplotContext.lineWidth=2;
-  scrollplotContext.stroke();
-  rafID = window.requestAnimationFrame( drawTotal );
-}
-
 function updateSpectrogram(time) {
     if (!spectrogramContext) {
         var speccanvas = document.getElementById("spectrogram");
@@ -175,18 +143,19 @@ function updateSpectrogram(time) {
 
         analyserNode.getByteFrequencyData(freqByteData); 
 
-        maxRecord=Math.max(specIndex,maxRecord)
         storeSpec[specIndex]=freqByteData;
-        storeTot[ specIndex]=freqByteData.reduce((a,b)=>a+b);
-        // why doesn't array have "sum" method ... it can stor all kinds of stuff?
         specIndex+=1;
-        
-        specIndex=specIndex%nWindow;
+        if (specIndex>=nWindow){
+            specIndex=0;
+            doShow=true;
+        }
 
-        { // this used to be conditional on length of record
+        if (doShow){
             var nRow=freqByteData.length;
             var pen=0;
             var c1 = document.createElement("canvas");
+            //c1.width = canvasWidth;
+            //c1.height = canvasHeight;
             c1.width = nWindow;
             c1.height = nRow;
             var ctx1 = c1.getContext("2d");
@@ -194,20 +163,11 @@ function updateSpectrogram(time) {
             var imgData = spectrogramContext.createImageData(nWindow, nRow);
             for (var j=0; j<nRow; j+=1) {
                for (var i=0; i<nWindow; i+=1) {
-                  var ii=(i+specIndex)%nWindow;
-                  if (ii<=maxRecord){
-                    imgData.data[pen  ]   = storeSpec[ii][j]; 
-                    imgData.data[pen+1]   = storeSpec[ii][j]; 
-                    imgData.data[pen+2]   = storeSpec[ii][j]; 
+                    imgData.data[pen  ]   = storeSpec[i][j]; 
+                    imgData.data[pen+1]   = storeSpec[i][j]; 
+                    imgData.data[pen+2]   = storeSpec[i][j]; 
                     imgData.data[pen+3]   = 255; 
                     pen+=4;
-                  } else {
-                    imgData.data[pen  ]   = 200; 
-                    imgData.data[pen+1]   = 0; 
-                    imgData.data[pen+2]   = 100; 
-                    imgData.data[pen+3]   = 255; 
-                    pen+=4;
-                  }
                 }
             }
             ctx1.putImageData(imgData, 0, 0);
@@ -252,7 +212,6 @@ function gotStream(stream) {
     zeroGain.connect( audioContext.destination );
     updateAnalysers();
     updateSpectrogram();
-    drawTotal();
 }
 
 function initAudio() {
@@ -266,10 +225,6 @@ function initAudio() {
             navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
 
    navigator.getUserMedia(
-<<<<<<< HEAD
-  /* navigator.mediaDevices.getUserMedia(*/
-=======
->>>>>>> d5e6731e372e41c472b2fea2c992c7805da08b3b
         {
             "audio": {
                 "mandatory": {
